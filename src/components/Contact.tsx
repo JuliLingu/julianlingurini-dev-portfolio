@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -21,8 +23,8 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "¡Mensaje enviado!",
-        description: "Gracias por contactarme. Te responderé pronto.",
+        title: t("contact.successTitle"),
+        description: t("contact.successDesc"),
       });
       setFormData({ name: "", email: "", message: "" });
       setIsSubmitting(false);
@@ -44,11 +46,11 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-4 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Contacto
+              {t("contact.title")}
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
             <p className="text-lg text-muted-foreground">
-              ¿Tienes un proyecto en mente? ¡Hablemos!
+              {t("contact.subtitle")}
             </p>
           </div>
 
@@ -57,7 +59,7 @@ const Contact = () => {
             <div className="space-y-6 animate-fade-in-up">
               <div>
                 <h3 className="text-2xl font-semibold text-foreground mb-6">
-                  Información de Contacto
+                  {t("contact.info")}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
@@ -65,7 +67,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">Email</p>
+                      <p className="font-medium text-foreground">{t("contact.email")}</p>
                       <a
                         href="mailto:julian@example.com"
                         className="text-muted-foreground hover:text-primary transition-smooth"
@@ -80,15 +82,15 @@ const Contact = () => {
                       <MapPin className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">Ubicación</p>
-                      <p className="text-muted-foreground">Argentina</p>
+                      <p className="font-medium text-foreground">{t("contact.location")}</p>
+                      <p className="text-muted-foreground">{t("contact.locationValue")}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="pt-6">
-                <h4 className="font-semibold text-foreground mb-4">Redes Sociales</h4>
+                <h4 className="font-semibold text-foreground mb-4">{t("contact.socialMedia")}</h4>
                 <div className="flex gap-4">
                   <a
                     href="https://github.com"
@@ -118,7 +120,7 @@ const Contact = () => {
                 <Input
                   type="text"
                   name="name"
-                  placeholder="Tu nombre"
+                  placeholder={t("contact.namePlaceholder")}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -129,7 +131,7 @@ const Contact = () => {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="Tu email"
+                  placeholder={t("contact.emailPlaceholder")}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -139,7 +141,7 @@ const Contact = () => {
               <div>
                 <Textarea
                   name="message"
-                  placeholder="Tu mensaje"
+                  placeholder={t("contact.messagePlaceholder")}
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -154,10 +156,10 @@ const Contact = () => {
                 size="lg"
               >
                 {isSubmitting ? (
-                  "Enviando..."
+                  t("contact.sending")
                 ) : (
                   <>
-                    Enviar Mensaje
+                    {t("contact.send")}
                     <Send className="ml-2 w-4 h-4" />
                   </>
                 )}

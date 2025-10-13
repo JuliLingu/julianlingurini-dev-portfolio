@@ -1,22 +1,25 @@
 import { Code2, Languages, Lightbulb } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  
   const highlights = [
     {
       icon: Code2,
-      title: "Desarrollo Full Stack",
-      description: "Especializado en crear soluciones completas desde el frontend hasta el backend",
+      title: t("about.fullstack"),
+      description: t("about.fullstackDesc"),
     },
     {
       icon: Lightbulb,
-      title: "Pensamiento Analítico",
-      description: "Enfoque sistemático para resolver problemas complejos con soluciones elegantes",
+      title: t("about.analytical"),
+      description: t("about.analyticalDesc"),
     },
     {
       icon: Languages,
-      title: "Intercambio de Idiomas",
-      description: "Disponible para intercambio de idiomas: Español nativo e Inglés intermedio-avanzado",
+      title: t("about.languages"),
+      description: t("about.languagesDesc"),
     },
   ];
 
@@ -26,32 +29,23 @@ const About = () => {
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-4 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Sobre Mí
+              {t("about.title")}
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
 
           <div className="space-y-6 text-lg text-muted-foreground animate-fade-in-up">
             <p>
-              Soy Julián Lingurini, un Desarrollador de Software y Analista de Sistemas apasionado
-              por la tecnología y la creación de soluciones digitales que marcan la diferencia.
+              {t("about.paragraph1")}
             </p>
             <p>
-              Mi viaje en el mundo de la programación comenzó con la curiosidad de entender cómo
-              funcionan las aplicaciones que usamos a diario. Esta curiosidad se transformó en una
-              pasión por construir experiencias digitales que sean no solo funcionales, sino también
-              intuitivas y agradables para los usuarios.
+              {t("about.paragraph2")}
             </p>
             <p>
-              Me especializo en el desarrollo con <strong className="text-foreground">React</strong> para
-              crear interfaces de usuario modernas y reactivas, y <strong className="text-foreground">C#</strong> para
-              desarrollar backends robustos y escalables. Mi enfoque como Analista de Sistemas me
-              permite integrar la lógica de negocio con soluciones técnicas bien estructuradas.
+              {t("about.paragraph3")} <strong className="text-foreground">{t("about.react")}</strong> {t("about.paragraph3b")} <strong className="text-foreground">{t("about.csharp")}</strong> {t("about.paragraph3c")}
             </p>
             <p>
-              Soy una persona <strong className="text-foreground">proactiva</strong>, siempre buscando nuevas
-              formas de mejorar y aprender. Disfruto trabajar en equipo y contribuir con ideas que
-              impulsen proyectos hacia adelante.
+              {t("about.paragraph4")} <strong className="text-foreground">{t("about.proactive")}</strong>{t("about.paragraph4b")}
             </p>
           </div>
 

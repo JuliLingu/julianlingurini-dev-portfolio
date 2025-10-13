@@ -1,8 +1,11 @@
 import { ArrowRight, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import profileImage from "@/assets/julian-profile.jpg";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -16,14 +19,14 @@ const Hero = () => {
           <div className="order-2 md:order-1 space-y-6 animate-fade-in">
             <div className="space-y-4">
               <p className="text-primary font-semibold text-lg">
-                Hola, soy Julián Lingurini
+                {t("hero.greeting")}
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Construyendo experiencias digitales{" "}
-                <span className="text-primary">intuitivas</span>
+                {t("hero.title")}{" "}
+                <span className="text-primary">{t("hero.titleHighlight")}</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Desarrollador de Software y Analista de Sistemas especializado en React y C#
+                {t("hero.subtitle")}
               </p>
             </div>
 
@@ -33,7 +36,7 @@ const Hero = () => {
                 className="gradient-primary shadow-elegant hover:shadow-lg transition-smooth"
                 onClick={() => scrollToSection("#proyectos")}
               >
-                Ver mis proyectos
+                {t("hero.viewProjects")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
@@ -42,7 +45,7 @@ const Hero = () => {
                 className="border-2"
                 onClick={() => scrollToSection("#contacto")}
               >
-                Contactarme
+                {t("hero.contactMe")}
               </Button>
             </div>
 

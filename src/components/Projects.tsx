@@ -1,34 +1,34 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 
 const Projects = () => {
+  const { t } = useLanguage();
+  
   const projects = [
     {
-      title: "Dashboard de Análisis de Datos",
-      description:
-        "Aplicación web construida con React que permite visualizar y analizar datos en tiempo real mediante gráficos interactivos y reportes personalizados.",
+      title: t("projects.project1Title"),
+      description: t("projects.project1Desc"),
       image: project1,
       technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS"],
       github: "#",
       demo: "#",
     },
     {
-      title: "API REST con C# y .NET",
-      description:
-        "Backend robusto desarrollado con C# y .NET Core para gestionar operaciones CRUD, autenticación JWT y conexión a bases de datos SQL Server.",
+      title: t("projects.project2Title"),
+      description: t("projects.project2Desc"),
       image: project2,
       technologies: ["C#", ".NET Core", "SQL Server", "Entity Framework"],
       github: "#",
       demo: "#",
     },
     {
-      title: "Sistema de Gestión Full Stack",
-      description:
-        "Aplicación completa de gestión empresarial con frontend en React y backend en C#, incluyendo módulos de inventario, ventas y reportes.",
+      title: t("projects.project3Title"),
+      description: t("projects.project3Desc"),
       image: project3,
       technologies: ["React", "C#", ".NET", "PostgreSQL", "Azure"],
       github: "#",
@@ -42,12 +42,11 @@ const Projects = () => {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center space-y-4 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Proyectos Destacados
+              {t("projects.title")}
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Una selección de mis trabajos más recientes que demuestran mis habilidades
-              en desarrollo frontend y backend
+              {t("projects.subtitle")}
             </p>
           </div>
 
@@ -73,7 +72,7 @@ const Projects = () => {
                     >
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-1" />
-                        Código
+                        {t("projects.code")}
                       </a>
                     </Button>
                     <Button
@@ -83,7 +82,7 @@ const Projects = () => {
                     >
                       <a href={project.demo} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-1" />
-                        Demo
+                        {t("projects.demo")}
                       </a>
                     </Button>
                   </div>

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,12 +17,16 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Sobre Mí", href: "#sobre-mi" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Habilidades", href: "#habilidades" },
-    { label: "Contacto", href: "#contacto" },
+    { label: t("nav.home"), href: "#inicio" },
+    { label: t("nav.about"), href: "#sobre-mi" },
+    { label: t("nav.projects"), href: "#proyectos" },
+    { label: t("nav.skills"), href: "#habilidades" },
+    { label: t("nav.contact"), href: "#contacto" },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === "es" ? "en" : "es");
+  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -48,7 +54,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -62,6 +68,15 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleLanguage}
+              className="gap-2"
+            >
+              <Globe className="w-4 h-4" />
+              {language === "es" ? "EN" : "ES"}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,6 +106,15 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleLanguage}
+              className="gap-2 mt-2"
+            >
+              <Globe className="w-4 h-4" />
+              {language === "es" ? "English" : "Español"}
+            </Button>
           </div>
         )}
       </div>
