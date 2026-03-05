@@ -1,171 +1,109 @@
+import { Mail, Phone, Github, Linkedin, Check } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 import { useState } from "react";
-import { Mail, MapPin, Send, Github, Linkedin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { t } = useLanguage();
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("lingurinijulian.dev@gmail.com");
+      setIsCopied(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: t("contact.successTitle"),
-        description: t("contact.successDesc"),
-      });
-      setFormData({ name: "", email: "", message: "" });
-      setIsSubmitting(false);
-    }, 1000);
+      // Vuelve al estado original después de 2 segundos
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (err) {
+      console.error("Error al copiar el email: ", err);
+    }
   };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
-    <section id="contacto" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <div className="text-center space-y-4 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              {t("contact.title")}
-            </h2>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-            <p className="text-lg text-muted-foreground">
-              {t("contact.subtitle")}
-            </p>
-          </div>
+    <section id="contacto" className="py-20 bg-muted/50">
+      <div className="container px-4 mx-auto max-w-4xl">
+        <div className="text-center mb-12">
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-6 animate-fade-in-up">
-              <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">
-                  {t("contact.info")}
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">{t("contact.email")}</p>
-                      <a
-                        href="mailto:julian@example.com"
-                        className="text-muted-foreground hover:text-primary transition-smooth"
-                      >
-                        julian@example.com
-                      </a>
-                    </div>
-                  </div>
+          {/* Título dinámico */}
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {t("contact.title")}
+          </h2>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-foreground">{t("contact.location")}</p>
-                      <p className="text-muted-foreground">{t("contact.locationValue")}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {/* Descripción dinámica */}
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {t("contact.description")}
+          </p>
 
-              <div className="pt-6">
-                <h4 className="font-semibold text-foreground mb-4">{t("contact.socialMedia")}</h4>
-                <div className="flex gap-4">
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
-                    aria-label="GitHub"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
+        </div>
+
+        {/* Cambiamos el ancho máximo (max-w-3xl) para que las 4 tarjetas respiren bien */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+          {/* --- TARJETA DE EMAIL --- */}
+          {/* --- TARJETA DE EMAIL (AHORA COPIA AL PORTAPAPELES) --- */}
+          <button
+            onClick={handleCopyEmail}
+            className="flex flex-col items-center justify-center text-center gap-4 p-6 bg-background rounded-xl border hover:border-primary transition-all hover:shadow-md group w-full cursor-pointer"
+          >
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${isCopied ? 'bg-green-100 text-green-600' : 'bg-primary/10 text-primary'}`}>
+              {isCopied ? <Check className="w-6 h-6" /> : <Mail className="w-6 h-6" />}
             </div>
+            <div>
+              <h3 className={`font-semibold text-lg transition-colors ${isCopied ? 'text-green-600' : ''}`}>
+                {isCopied ? t("contact.copy") : "Email"}
+              </h3>
+              <p className="text-muted-foreground text-sm mt-1">lingurinijulian.dev@gmail.com</p>
+            </div>
+          </button>
 
-            {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in-up">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder={t("contact.namePlaceholder")}
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder={t("contact.emailPlaceholder")}
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder={t("contact.messagePlaceholder")}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full resize-none"
-                />
-              </div>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full gradient-primary shadow-elegant hover:shadow-lg transition-smooth"
-                size="lg"
-              >
-                {isSubmitting ? (
-                  t("contact.sending")
-                ) : (
-                  <>
-                    {t("contact.send")}
-                    <Send className="ml-2 w-4 h-4" />
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
+          {/* --- TARJETA DE TELÉFONO / WHATSAPP --- */}
+          <a
+            href="https://wa.me/5492234214414"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center text-center gap-4 p-6 bg-background rounded-xl border hover:border-primary transition-all hover:shadow-md group"
+          >
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <Phone className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg">WhatsApp</h3>
+              <p className="text-muted-foreground text-sm mt-1">+54 9 223 421-4414</p>
+            </div>
+          </a>
+
+          {/* --- TARJETA DE GITHUB --- */}
+          <a
+            href="https://github.com/JuliLingu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center text-center gap-4 p-6 bg-background rounded-xl border hover:border-primary transition-all hover:shadow-md group"
+          >
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <Github className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg">GitHub</h3>
+              <p className="text-muted-foreground text-sm mt-1">JuliLingu</p>
+            </div>
+          </a>
+
+          {/* --- TARJETA DE LINKEDIN --- */}
+          <a
+            href="https://www.linkedin.com/in/julian-lingurini"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center text-center gap-4 p-6 bg-background rounded-xl border hover:border-primary transition-all hover:shadow-md group"
+          >
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <Linkedin className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg">LinkedIn</h3>
+              <p className="text-muted-foreground text-sm mt-1">julian-lingurini</p>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>

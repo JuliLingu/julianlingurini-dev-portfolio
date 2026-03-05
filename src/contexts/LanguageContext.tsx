@@ -28,11 +28,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const t = (key: string): string => {
     const keys = key.split(".");
     let value: any = translations[language];
-    
+
     for (const k of keys) {
       value = value?.[k];
     }
-    
+
     return value || key;
   };
 
@@ -110,19 +110,8 @@ const translations = {
     },
     contact: {
       title: "Contacto",
-      subtitle: "¿Tienes un proyecto en mente? ¡Hablemos!",
-      info: "Información de Contacto",
-      email: "Email",
-      location: "Ubicación",
-      locationValue: "Argentina",
-      socialMedia: "Redes Sociales",
-      namePlaceholder: "Tu nombre",
-      emailPlaceholder: "Tu email",
-      messagePlaceholder: "Tu mensaje",
-      send: "Enviar Mensaje",
-      sending: "Enviando...",
-      successTitle: "¡Mensaje enviado!",
-      successDesc: "Gracias por contactarme. Te responderé pronto.",
+      description: "Puedes contactarme directamente a través de mi correo electrónico o por teléfono.",
+      copy:"Copiado",
     },
     footer: {
       madeWith: "Hecho con",
@@ -196,19 +185,8 @@ const translations = {
     },
     contact: {
       title: "Contact",
-      subtitle: "Have a project in mind? Let's talk!",
-      info: "Contact Information",
-      email: "Email",
-      location: "Location",
-      locationValue: "Argentina",
-      socialMedia: "Social Media",
-      namePlaceholder: "Your name",
-      emailPlaceholder: "Your email",
-      messagePlaceholder: "Your message",
-      send: "Send Message",
-      sending: "Sending...",
-      successTitle: "Message sent!",
-      successDesc: "Thanks for contacting me. I'll respond soon.",
+      description: "You can contact me directly via email or phone.",
+      copy:"Copied",
     },
     footer: {
       madeWith: "Made with",
