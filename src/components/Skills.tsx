@@ -5,7 +5,7 @@ const Skills = () => {
   const { t } = useLanguage();
 
   const technicalSkills = [
-    { name: "React", icon: Code2 },
+    { name: "React / Next.js", icon: Code2 },
     { name: "C# / .NET", icon: Server },
     { name: "TypeScript", icon: Code2 },
     { name: "SQL / Bases de Datos", icon: Database },

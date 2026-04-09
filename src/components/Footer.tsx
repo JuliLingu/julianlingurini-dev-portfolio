@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center space-y-4">
           <p className="text-sm text-center flex items-center gap-2">
-            {t("footer.madeWith")} <Heart className="w-4 h-4 text-primary fill-primary" /> {t("footer.by")}
+            {t("footer.madeWith")} {t("footer.by")}
           </p>
           <p className="text-xs text-muted opacity-70">
             © {new Date().getFullYear()} {t("footer.rights")}

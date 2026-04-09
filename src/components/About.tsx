@@ -42,7 +42,7 @@ const About = () => {
               {t("about.paragraph2")}
             </p>
             <p>
-              {t("about.paragraph3")} <strong className="text-foreground">{t("about.react")}</strong> {t("about.paragraph3b")} <strong className="text-foreground">{t("about.csharp")}</strong> {t("about.paragraph3c")}
+              {t("about.paragraph3")} <strong className="text-foreground">{t("about.nextjs")}</strong> {t("about.paragraph3b")} <strong className="text-foreground">{t("about.sql")}</strong> {t("about.paragraph3c")}
             </p>
             <p>
               {t("about.paragraph4")} <strong className="text-foreground">{t("about.proactive")}</strong>{t("about.paragraph4b")}

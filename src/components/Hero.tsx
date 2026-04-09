@@ -1,7 +1,7 @@
 import { ArrowRight, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import profileImage from "@/assets/julian-profile.jpg";
+import profileImage from "@/assets/julian-perfil.jpg";
 
 const Hero = () => {
   const { t } = useLanguage();

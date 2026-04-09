@@ -2,37 +2,34 @@ import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/UrbanBarber.jpg";
+import project2 from "@/assets/ChapaDetail.jpg";
+import project3 from "@/assets/gestionOk.jpg";
 
 const Projects = () => {
   const { t } = useLanguage();
-  
+
   const projects = [
     {
       title: t("projects.project1Title"),
       description: t("projects.project1Desc"),
       image: project1,
-      technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS"],
-      github: "#",
-      demo: "#",
+      technologies: ["Next.js", "MySQL", "Prisma", "Auth.js", "Zod", "Tailwind CSS"],
+      demo: "https://urbanbarber-web.vercel.app/",
     },
     {
       title: t("projects.project2Title"),
       description: t("projects.project2Desc"),
       image: project2,
-      technologies: ["C#", ".NET Core", "SQL Server", "Entity Framework"],
-      github: "#",
-      demo: "#",
+      technologies: ["Next.js", "MariaDB", "Prisma", "Auth.js", "Zod", "Tailwind CSS"],
+      demo: "https://lavadero-web.vercel.app/",
     },
     {
       title: t("projects.project3Title"),
       description: t("projects.project3Desc"),
       image: project3,
-      technologies: ["React", "C#", ".NET", "PostgreSQL", "Azure"],
-      github: "#",
-      demo: "#",
+      technologies: ["Next.js", "MySQL", "Prisma", "Auth.js", "Zod", "Tailwind CSS"],
+      demo: "https://gestionok.vercel.app/",
     },
   ];
 
@@ -64,17 +61,6 @@ const Projects = () => {
                     className="w-full h-48 object-cover transition-smooth group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end justify-center pb-4 gap-2">
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      className="shadow-lg"
-                      asChild
-                    >
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-1" />
-                        {t("projects.code")}
-                      </a>
-                    </Button>
                     <Button
                       size="sm"
                       className="gradient-primary shadow-lg"
