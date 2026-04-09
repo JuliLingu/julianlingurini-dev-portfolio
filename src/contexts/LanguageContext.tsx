@@ -59,6 +59,7 @@ const translations = {
       subtitle: "Desarrollador de Software y Analista de Sistemas especializado en Next.js y SQL",
       viewProjects: "Ver mis proyectos",
       contactMe: "Contactarme",
+      downloadCV: "Descargar CV",
     },
     about: {
       title: "Sobre Mí",
@@ -134,6 +135,7 @@ const translations = {
       subtitle: "Software Developer and Systems Analyst specialized in Next.js and SQL",
       viewProjects: "View my projects",
       contactMe: "Contact me",
+      downloadCV: "Download CV",
     },
     about: {
       title: "About Me",

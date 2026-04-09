@@ -1,10 +1,10 @@
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import profileImage from "@/assets/julian-perfil.jpg";
 
 const Hero = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -46,6 +46,17 @@ const Hero = () => {
                 onClick={() => scrollToSection("#contacto")}
               >
                 {t("hero.contactMe")}
+              </Button>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="shadow-elegant hover:shadow-lg transition-smooth border-2"
+                asChild
+              >
+                <a href={language === 'es' ? "/CV_Julian_Lingurini.pdf" : "/Resume_Julian_Lingurini.pdf"} download>
+                  {t("hero.downloadCV")}
+                  <Download className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
 
