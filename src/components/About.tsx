@@ -38,15 +38,6 @@ const About = () => {
             <p>
               {t("about.paragraph1")}
             </p>
-            <p>
-              {t("about.paragraph2")}
-            </p>
-            <p>
-              {t("about.paragraph3")} <strong className="text-foreground">{t("about.nextjs")}</strong> {t("about.paragraph3b")} <strong className="text-foreground">{t("about.sql")}</strong> {t("about.paragraph3c")}
-            </p>
-            <p>
-              {t("about.paragraph4")} <strong className="text-foreground">{t("about.proactive")}</strong>{t("about.paragraph4b")}
-            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 pt-8">
