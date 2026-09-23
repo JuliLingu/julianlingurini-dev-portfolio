@@ -67,8 +67,8 @@ const Projects = () => {
       title: t("projects.project4Title"),
       description: t("projects.project4Desc"),
       image: project4,
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Server Actions"],
-      demo: "https://concesionario-web-two.vercel.app/",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Server Actions", "Cloudinary"],
+      demo: "https://concesionario-web-five.vercel.app/",
     },
   ];
 
