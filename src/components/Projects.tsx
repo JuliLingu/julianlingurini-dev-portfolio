@@ -11,10 +11,11 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { useLanguage } from "@/contexts/LanguageContext";
-import project1 from "@/assets/UrbanBarber.jpg";
-import project2 from "@/assets/ChapaDetail.jpg";
-import project3 from "@/assets/gestionOk.jpg";
-import project4 from "@/assets/AgenciaWeb.jpg";
+import project1 from "@/assets/UrbanBarber.webp";
+import project2 from "@/assets/ChapaDetail.webp";
+import project3 from "@/assets/gestionOk.webp";
+import project4 from "@/assets/AgenciaWeb.webp";
+import project5 from "@/assets/NewSurfboards.webp";
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -46,8 +47,8 @@ const Projects = () => {
       title: t("projects.project1Title"),
       description: t("projects.project1Desc"),
       image: project1,
-      technologies: ["Next.js", "MySQL", "Prisma", "Auth.js", "Zod", "Tailwind CSS"],
-      demo: "https://urbanbarber-web.vercel.app/",
+      technologies: ["Next.js", "TypeScript", "Prisma", "MySQL", "WebSockets", "Mercado Pago"],
+      demo: "https://demo-barber.logabyte.com.ar/",
     },
     {
       title: t("projects.project2Title"),
@@ -67,8 +68,15 @@ const Projects = () => {
       title: t("projects.project4Title"),
       description: t("projects.project4Desc"),
       image: project4,
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Server Actions", "Cloudinary"],
+      technologies: ["Next.js", "TypeScript", "Prisma", "MySQL", "Auth.js", "GitHub Actions"],
       demo: "https://concesionario-web-five.vercel.app/",
+    },
+    {
+      title: t("projects.project5Title"),
+      description: t("projects.project5Desc"),
+      image: project5,
+      technologies: ["Next.js", "React", "TypeScript", "Prisma", "Auth.js", "Cloudinary"],
+      demo: "https://newsurfboards.vercel.app/",
     },
   ];
 
@@ -98,27 +106,23 @@ const Projects = () => {
                   className="pl-6 md:basis-1/2 lg:basis-1/3"
                 >
                   <Card className="h-full flex flex-col overflow-hidden border-border hover:shadow-elegant transition-smooth group">
-                    <div className="relative overflow-hidden">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative overflow-hidden block"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                    >
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt=""
+                        loading="lazy"
                         className="w-full h-48 object-cover transition-smooth group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end justify-center pb-4 gap-2">
-                        <Button
-                          size="sm"
-                          className="gradient-primary shadow-lg"
-                          asChild
-                        >
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-1" />
-                            {t("projects.demo")}
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
+                    </a>
 
-                    <CardContent className="p-6 space-y-4">
+                    <CardContent className="p-6 gap-4 flex flex-col flex-1">
                       <h3 className="text-xl font-semibold text-foreground">
                         {project.title}
                       </h3>
@@ -135,6 +139,16 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
+                      <Button
+                        size="sm"
+                        className="gradient-primary shadow-elegant w-fit mt-auto"
+                        asChild
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          {t("projects.demo")}
+                        </a>
+                      </Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>

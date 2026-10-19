@@ -1,11 +1,16 @@
-import { ArrowRight, Github, Linkedin, Download } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Download, Code2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import profileImage from "@/assets/julian-perfil.jpg";
+import profileImage from "@/assets/julian-perfil.webp";
 
 const Hero = () => {
   const { t, language } = useLanguage();
-  
+
+  const roles = [
+    { label: t("hero.roleFullstack"), icon: Code2 },
+    { label: t("hero.roleAI"), icon: Sparkles },
+  ];
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -18,6 +23,17 @@ const Hero = () => {
           {/* Text Content */}
           <div className="order-2 md:order-1 space-y-6 animate-fade-in">
             <div className="space-y-4">
+              <div className="flex flex-wrap gap-2">
+                {roles.map((role) => (
+                  <span
+                    key={role.label}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full border border-primary/20"
+                  >
+                    <role.icon className="w-4 h-4" />
+                    {role.label}
+                  </span>
+                ))}
+              </div>
               <p className="text-primary font-semibold text-lg">
                 {t("hero.greeting")}
               </p>
@@ -88,7 +104,7 @@ const Hero = () => {
               <div className="absolute inset-0 gradient-primary rounded-3xl blur-2xl opacity-20"></div>
               <img
                 src={profileImage}
-                alt="Julián Lingurini - Desarrollador de Software"
+                alt={t("meta.title")}
                 className="relative rounded-3xl shadow-elegant w-full h-auto object-cover"
               />
             </div>

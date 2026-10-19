@@ -20,6 +20,7 @@ const Navbar = () => {
     { label: t("nav.home"), href: "#inicio" },
     { label: t("nav.about"), href: "#sobre-mi" },
     { label: t("nav.projects"), href: "#proyectos" },
+    { label: t("nav.experience"), href: "#experiencia" },
     { label: t("nav.skills"), href: "#habilidades" },
     { label: t("nav.contact"), href: "#contacto" },
   ];
